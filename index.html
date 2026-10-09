@@ -1,0 +1,557 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagoor | Personal Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b0f19;
+            color: #ffffff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: #111827;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00e5ff;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00e5ff;
+        }
+
+        section {
+            padding: 85px 8%;
+        }
+
+        .home {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .home-content {
+            max-width: 650px;
+        }
+
+        .home h3 {
+            font-size: 25px;
+            color: #00e5ff;
+            margin-bottom: 15px;
+        }
+
+        .home h1 {
+            font-size: 58px;
+            margin-bottom: 15px;
+        }
+
+        .home h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .home p {
+            color: #b8c2d6;
+            line-height: 1.8;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            color: #00e5ff;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #00e5ff;
+            color: #07111d;
+            padding: 13px 27px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #00e5ff;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: #00e5ff;
+        }
+
+        .profile-circle {
+            width: 290px;
+            height: 290px;
+            border: 5px solid #00e5ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            color: #00e5ff;
+            box-shadow: 0 0 35px rgba(0,229,255,0.25);
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 38px;
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            color: #b8c2d6;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        .skills-container,
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #151d2e;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #263449;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #00e5ff;
+            box-shadow: 0 8px 25px rgba(0,229,255,0.1);
+        }
+
+        .card .icon {
+            font-size: 42px;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            color: #00e5ff;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #b8c2d6;
+            line-height: 1.7;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .contact-container input,
+        .contact-container textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 18px;
+            border: 1px solid #34445c;
+            border-radius: 8px;
+            background: #151d2e;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .contact-container input:focus,
+        .contact-container textarea:focus {
+            border-color: #00e5ff;
+        }
+
+        .contact-container textarea {
+            height: 140px;
+            resize: vertical;
+        }
+
+        .contact-container button {
+            width: 100%;
+            font-size: 16px;
+        }
+
+        #formMessage {
+            margin-top: 18px;
+            color: #00e5ff;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #111827;
+            color: #b8c2d6;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0;
+            }
+
+            .home {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 60px;
+            }
+
+            .home h1 {
+                font-size: 42px;
+            }
+
+            .home h2 {
+                font-size: 24px;
+            }
+
+            .profile-circle {
+                width: 210px;
+                height: 210px;
+                font-size: 75px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">NAGOOR<span>.</span></div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+
+        <div class="home-content">
+            <h3>Hello, Welcome to My Portfolio!</h3>
+
+            <h1>I'm <span class="highlight">Nagoor</span></h1>
+
+            <h2>Aspiring <span class="highlight" id="typing"></span></h2>
+
+            <p>
+                Welcome to my personal portfolio website.
+                I am passionate about technology, programming,
+                creative ideas, and developing modern websites.
+                Explore my skills and projects to learn more about me.
+            </p>
+
+            <a href="#projects" class="btn">Explore My Work</a>
+        </div>
+
+        <div class="profile-circle">
+            👨‍💻
+        </div>
+
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+
+        <h2 class="section-title">
+            About <span class="highlight">Me</span>
+        </h2>
+
+        <div class="about-content">
+            <p>
+                Hi! I'm Nagoor. I am an enthusiastic learner interested
+                in web development, programming, and modern technologies.
+                My goal is to improve my technical skills, solve problems,
+                and build useful digital projects.
+            </p>
+
+            <br>
+
+            <p>
+                I enjoy learning new technologies and turning creative
+                ideas into practical projects. This portfolio showcases
+                my interests, skills, and work.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+
+        <h2 class="section-title">
+            My <span class="highlight">Skills</span>
+        </h2>
+
+        <div class="skills-container">
+
+            <div class="card">
+                <div class="icon">🌐</div>
+                <h3>HTML</h3>
+                <p>Creating structured and accessible web pages.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h3>CSS</h3>
+                <p>Designing attractive, responsive website layouts.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">⚡</div>
+                <h3>JavaScript</h3>
+                <p>Adding interactive features to websites.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">💻</div>
+                <h3>Programming</h3>
+                <p>Developing logical thinking and problem-solving skills.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+
+        <h2 class="section-title">
+            My <span class="highlight">Projects</span>
+        </h2>
+
+        <div class="projects-container">
+
+            <div class="card">
+                <div class="icon">🛒</div>
+                <h3>E-Commerce Website</h3>
+                <p>
+                    An online shopping website design with product
+                    cards and interactive shopping features.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎓</div>
+                <h3>Student Management</h3>
+                <p>
+                    A student information system concept for organizing
+                    student details and academic records.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🌟</div>
+                <h3>Personal Portfolio</h3>
+                <p>
+                    A responsive personal website to present my
+                    profile, skills, and development projects.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+
+        <h2 class="section-title">
+            Contact <span class="highlight">Me</span>
+        </h2>
+
+        <div class="contact-container">
+
+            <form id="contactForm">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="subject"
+                    placeholder="Subject"
+                    required
+                >
+
+                <textarea
+                    id="message"
+                    placeholder="Write your message..."
+                    required
+                ></textarea>
+
+                <button type="submit" class="btn">
+                    Send Message
+                </button>
+
+                <p id="formMessage"></p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © <span id="year"></span> Nagoor.
+            All Rights Reserved.
+        </p>
+        <p>Designed with ❤️ using HTML, CSS & JavaScript</p>
+    </footer>
+
+    <script>
+        // Automatic typing animation
+        const roles = [
+            "Web Developer",
+            "Programmer",
+            "Technology Enthusiast",
+            "Creative Learner"
+        ];
+
+        let roleIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        const typingElement = document.getElementById("typing");
+
+        function typeEffect() {
+            if (!typingElement) return;
+
+            const currentRole = roles[roleIndex];
+
+            if (!deleting) {
+                typingElement.textContent =
+                    currentRole.substring(0, charIndex + 1);
+
+                charIndex++;
+
+                if (charIndex === currentRole.length) {
+                    deleting = true;
+                    setTimeout(typeEffect, 1200);
+                    return;
+                }
+            } else {
+                typingElement.textContent =
+                    currentRole.substring(0, charIndex - 1);
+
+                charIndex--;
+
+                if (charIndex === 0) {
+                    deleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                }
+            }
+
+            setTimeout(typeEffect, deleting ? 50 : 100);
+        }
+
+        if (typingElement) {
+            typeEffect();
+        }
+
+        // Automatically update the footer year
+        const yearElement = document.getElementById("year");
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+
+        // Contact form demonstration
+        const contactForm = document.getElementById("contactForm");
+        const formMessage = document.getElementById("formMessage");
+
+        if (contactForm && formMessage) {
+            contactForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                if (!contactForm.checkValidity()) {
+                    contactForm.reportValidity();
+                    return;
+                }
+
+                const nameInput = document.getElementById("name");
+                const name = nameInput ? nameInput.value.trim() : "";
+                const displayName = name || "friend";
+
+                formMessage.textContent =
+                    "Thank you, " + displayName +
+                    "! Your form was validated successfully.";
+
+                this.reset();
+            });
+        }
+    </script>
+
+</body>
+</html>
+```
